@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>583-Assignment1</title>
+  <link rel="stylesheet" href="script/base.css">
+  <link rel="stylesheet" href="script/jquery-ui-1.12.1.custom/jquery-ui-min.css">
+  <link rel="stylesheet" href="script/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css">
+  <script>
+    $( function() {
+    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+    $( "button, input, a" ).click( function( event ) {
+      event.preventDefault();
+    } );
+  } );
+    function buttonPress(value){
+      currentContext = value;
+      draw();
+    };
+  </script>
+</head>
+<body>
+
+
+  
+    <div class="container">
+        <h1>Behavior Appropriateness by Context</h1>
+        <div id = 'inner'>
+          <div>
+          <button class="ui-button ui-widget ui-corner-all" onClick ="buttonPress(0)">Class</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(1)">Date</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(2)">Bus</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(3)">Family dinner</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(4)">Park</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(5)">Church</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(6)">Job interview</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(7)">Sidewalk</button> 
+        </div>
+        <div>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(8)">Movies</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(9)">Bar</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(10)">Elevator</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(11)">Restroom</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(12)">Own room</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(13)">Dorm lounge</button>
+          <button class="ui-button ui-widget ui-corner-all"onclick= "buttonPress(14)">Football game</button>
+        </div>
+    </div>
+      <div id="chart"></div>
+      <p>*note: a rating of 10 represents a completely appropriate behavior</p>
+    </div>
+  
+  <script src="script/d3.min.js"></script>
+  <script src="assignment1.js"></script>
+  <script src="script/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  <script src="script/jquery.js"></script>
+</body>
+</html>
