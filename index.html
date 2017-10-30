@@ -35,6 +35,7 @@ var svg = d3.select("svg"),
     height = +svg.attr("height"),
     g = svg.append("g").attr("transform", "translate(" + (width / 2 + 40) + "," + (height / 2 + 90) + ")");
 
+var count = 0;
 var stratify = d3.stratify()
     .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
@@ -45,12 +46,96 @@ var tree = d3.tree()
 d3.csv("UK-Food-trends7.csv", function(error, data) {
   if (error) throw error;
 
-  var root = tree(stratify(data));
+  console.log(data[count++].id);
+  /*var description = data.id.split('.');
+*/
 
+  
+  var root = tree(stratify(data));
+  console.log(root.links());
   var link = g.selectAll(".link")
     .data(root.links())
     .enter().append("path")
       .attr("class", "link")
+      .style("stroke", function(d){
+          switch (d.source.children[0].id.split('.')[1]){
+          case "Milk and milk products excluding cheese":
+              return "blue";
+              break;
+          case "Cheese":
+              return "blue";
+              break;
+          case "Carcase meat":
+              return "yellow";
+              break;
+          case "Non-carcase meat and meat products":
+              return "yellow";
+              break;
+          case "Fish":
+              return "yellow";
+              break;
+          case "Eggs":
+              return "yellow";
+              break;
+          case "Fats":
+              return "orange";
+              break;
+          case "Sugar and preserves":
+              return "red";
+              break;
+          case "Fresh and processed fruit and vegetables including potatoes":
+              return "green";
+              break;
+          case "Fresh and processed vegetables including potatoes":
+              return "green";
+              break;
+          case "Fresh and processed potatoes":
+              return "brown";
+              break;
+          case "Fresh and processed fruit and vegetables, excluding potatoes":
+              return "green";
+              break;
+          case "Fresh and processed vegetables, excluding potatoes":
+              return "green";
+              break;
+          case "Fresh and processed fruit":
+              return "green";
+              break;
+          case "Bread":
+              return "brown";
+              break;
+          case "Flour":
+              return "brown";
+              break;
+          case "Cakes, buns and pastries":
+              return "brown";
+              break;
+          case "Biscuits and crispbreads":
+              return "brown";
+              break;
+          case "Other cereals and cereal products":
+              return "brown";
+              break;
+          case "Beverages":
+              return "black";
+              break;
+          case "Other food and drink":
+              return "black";
+              break;
+          case "Soft drinks":
+              return "red";
+              break;
+          case "Confectionery":
+              return "red";
+              break;
+          case "Alcoholic drinks":
+              return "red";
+              break;
+          default:
+              return "grey";
+          
+        }
+        ;})
       .attr("d", d3.linkRadial()
           .angle(function(d) { return d.x; })
           .radius(function(d) { return d.y; }));
@@ -62,15 +147,15 @@ d3.csv("UK-Food-trends7.csv", function(error, data) {
       .attr("transform", function(d) { return "translate(" + radialPoint(d.x, d.y) + ")"; });
 
   node.append("circle")
-      .attr("r", 2.5);
-/*
+      .attr("r", function(d){ if(d.id.substring(d.id.lastIndexOf(".") + 1) != "-")return 2.5; else return 0;});
+
   node.append("text")
       .attr("dy", "0.31em")
       .attr("x", function(d) { return d.x < Math.PI === !d.children ? 6 : -6; })
       .attr("text-anchor", function(d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
       .attr("transform", function(d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
-      .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
-      */
+      .text(function(d) { if(d.id.substring(d.id.lastIndexOf(".") + 1) != "-")return d.id.substring(d.id.lastIndexOf(".") + 1); else return ""; });
+
 });
 
 function radialPoint(x, y) {
