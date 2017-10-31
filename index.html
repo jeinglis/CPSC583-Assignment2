@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>583-Assignment1</title>
+  <title>583-Assignment2</title>
 <link rel="stylesheet" href="script/base.css">
 
 </head>
-<body>
-<div style="color:#0000FF">
-<svg width="4000" height="4000"></svg>
-</div>
-</body>
+  <body>
+
+    <div style="color:#0000FF">
+      <div class="container">
+        <h1>Year Selector (1974 - 2014)</h1>
+          <input type="range" min="1974" max="2014" value="1974" class="slider" id="myRange">
+          <p>Current Year: <span id="demo"></span></p>
+      </div>
+      <div id="graph" align="center">
+      <svg width="4000" height="3400" ></svg>
+      </div>
+    </div>
+  </body>
 </html>
-
-
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="assignment2.js"></script>
