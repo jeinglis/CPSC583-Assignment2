@@ -13,45 +13,86 @@ var tree = d3.tree()
     .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
 var yearTotal = 0;
+var FatTotal, FVTotal, GrainsTotal, SweetsTotal, METotal, DairyTotal, MATotal;
  
 d3.csv("UK-Food-trends-final.csv", function(error, data) {
   if (error) throw error;
   var counter = 0;
+  var baseOpacity = 0.2;
+  var opacityMultiplier = 1;
   var root = tree(stratify(data));
   var link = g.selectAll(".link")
     .data(root.links())
     .enter().append("path")
       .attr("class", "link")
-      .style("opacity", function(d){
-        console.log(yearTotal);
+      /*.style("stroke-opacity", function(d){
         if(d.source.id == "UK Food Trends"){
-            yearTotal = d.source.data.year2014;
+          yearTotal = d.source.data.year2014;          
         }
-        switch (d.target.id.split('.')[1]){
+        else if(d.source.id.split('.').length == 2){
+          switch (d.source.id.split('.')[1]){
             case "Fats & Oils":
-              return (d.target.data.year/yearTotal);
+              FatTotal = d.source.data.year2014;
               break;
             case "Fruits & Veg":
-              return (d.target.data.year/yearTotal);
+              FVTotal = d.source.data.year2014;
               break;
             case "Grains":
-              return (d.target.data.year/yearTotal);
+              GrainsTotal = d.source.data.year2014;
               break;
+            case "Sweets":
+              SweetsTotal = d.source.data.year2014;
+              break;
+            case "Meats & Eggs":
+              METotal = d.source.data.year2014;
+              break;
+            case "Dairy":
+              DairyTotal = d.source.data.year2014;
+              break;
+            case "Misc & Alcohol":
+              MATotal = d.source.data.year2014;
+              break;    
+          }
+      }
+        switch (d.target.id.split('.')[1]){
+          case "Fats & Oils":
+            var sum =  baseOpacity + (parseInt(FatTotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);
+            return (sum * opacityMultiplier);
+            break;
+          case "Fruits & Veg":
+            var sum =  baseOpacity + (parseInt(FVTotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);
+            return (sum * opacityMultiplier);
+            break;
+          case "Grains":
+            var sum =  baseOpacity + (parseInt(GrainsTotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);       
+            return (sum * opacityMultiplier);
+            break;
           case "Sweets":
-              return (d.target.data.year/yearTotal);
-              break;
+            var sum =  baseOpacity + (parseInt(SweetsTotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);
+            return (sum * opacityMultiplier);
+            break;
           case "Meats & Eggs":
-              return (d.target.data.year/yearTotal);
-              break;
+            var sum =  baseOpacity + (parseInt(METotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);         
+            return (sum * opacityMultiplier);
+            break;
           case "Dairy":
-              return (d.target.data.year/yearTotal);
-              break; 
+            var sum =  baseOpacity + (parseInt(DairyTotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);           
+            return (sum * opacityMultiplier);
+            break; 
           case "Misc & Alcohol":
-              return (d.target.data.year/yearTotal);
-              break;        
+            var sum =  baseOpacity + (parseInt(MATotal)/parseInt(yearTotal));
+            console.log(d.target.id.split('.')[1]+ " : " + sum);           
+            return (sum * opacityMultiplier);
+            break;       
         }
 
-      })
+      })*/
       .style("stroke", function(d){
           switch (d.target.id.split('.')[1]){
             case "Fats & Oils":
