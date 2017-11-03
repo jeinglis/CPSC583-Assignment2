@@ -14,7 +14,7 @@ var tree = d3.tree()
 
 var yearTotal = 0;
  
-d3.csv("UK-Food-trends1.csv", function(error, data) {
+d3.csv("UK-Food-trends-final.csv", function(error, data) {
   if (error) throw error;
   var counter = 0;
   var root = tree(stratify(data));
@@ -93,47 +93,47 @@ d3.csv("UK-Food-trends1.csv", function(error, data) {
                 tooltip.transition()
                     .style('opacity', .9)
                 tooltip.html('<h1>' + (d.id.substring(d.id.lastIndexOf(".") + 1) + '</h1>') 
-                  + "<br/> 1974:  " + d.data.year1974 + " grams"
-                  + "<br/> 1975:  " + d.data.year1975 + " grams"
-                  + "<br/> 1976:  " + d.data.year1976 + " grams"
-                  + "<br/> 1977:  " + d.data.year1977 + " grams"
-                  + "<br/> 1978:  " + d.data.year1978 + " grams"
-                  + "<br/> 1979:  " + d.data.year1979 + " grams"
-                  + "<br/> 1980:  " + d.data.year1980 + " grams"
-                  + "<br/> 1981:  " + d.data.year1981 + " grams"
-                  + "<br/> 1982:  " + d.data.year1982 + " grams"
-                  + "<br/> 1983:  " + d.data.year1983 + " grams"
-                  + "<br/> 1984:  " + d.data.year1984 + " grams"
-                  + "<br/> 1985:  " + d.data.year1985 + " grams"
-                  + "<br/> 1986:  " + d.data.year1986 + " grams"
-                  + "<br/> 1987:  " + d.data.year1987 + " grams"
-                  + "<br/> 1988:  " + d.data.year1988 + " grams"
-                  + "<br/> 1989:  " + d.data.year1989 + " grams"
-                  + "<br/> 1990:  " + d.data.year1990 + " grams"
-                  + "<br/> 1991:  " + d.data.year1991 + " grams"
-                  + "<br/> 1992:  " + d.data.year1992 + " grams"
-                  + "<br/> 1993:  " + d.data.year1993 + " grams"
-                  + "<br/> 1994:  " + d.data.year1994 + " grams"
-                  + "<br/> 1995:  " + d.data.year1995 + " grams"
-                  + "<br/> 1996:  " + d.data.year1996 + " grams"
-                  + "<br/> 1997:  " + d.data.year1997 + " grams"
-                  + "<br/> 1998:  " + d.data.year1998 + " grams"
-                  + "<br/> 1999:  " + d.data.year1999 + " grams"
-                  + "<br/> 2000:  " + d.data.year2014 + " grams"
-                  + "<br/> 2001:  " + d.data.year2000 + " grams"
-                  + "<br/> 2002:  " + d.data.year2001 + " grams"
-                  + "<br/> 2003:  " + d.data.year2002 + " grams"
-                  + "<br/> 2004:  " + d.data.year2003 + " grams"
-                  + "<br/> 2005:  " + d.data.year2004 + " grams"
-                  + "<br/> 2006:  " + d.data.year2005 + " grams"
-                  + "<br/> 2007:  " + d.data.year2006 + " grams"
-                  + "<br/> 2008:  " + d.data.year2007 + " grams"
-                  + "<br/> 2009:  " + d.data.year2008 + " grams"
-                  + "<br/> 2010:  " + d.data.year2009 + " grams"
-                  + "<br/> 2011:  " + d.data.year2010 + " grams"
-                  + "<br/> 2012:  " + d.data.year2011 + " grams"
-                  + "<br/> 2013:  " + d.data.year2012 + " grams"
-                  + "<br/> 2014:  " + d.data.year2013 + " grams")
+                  + "<br/> 1974:  " + d.data.year1974 + d.data.unit
+                  + "<br/> 1975:  " + d.data.year1975 + d.data.unit
+                  + "<br/> 1976:  " + d.data.year1976 + d.data.unit
+                  + "<br/> 1977:  " + d.data.year1977 + d.data.unit
+                  + "<br/> 1978:  " + d.data.year1978 + d.data.unit
+                  + "<br/> 1979:  " + d.data.year1979 + d.data.unit
+                  + "<br/> 1980:  " + d.data.year1980 + d.data.unit
+                  + "<br/> 1981:  " + d.data.year1981 + d.data.unit
+                  + "<br/> 1982:  " + d.data.year1982 + d.data.unit
+                  + "<br/> 1983:  " + d.data.year1983 + d.data.unit
+                  + "<br/> 1984:  " + d.data.year1984 + d.data.unit
+                  + "<br/> 1985:  " + d.data.year1985 + d.data.unit
+                  + "<br/> 1986:  " + d.data.year1986 + d.data.unit
+                  + "<br/> 1987:  " + d.data.year1987 + d.data.unit
+                  + "<br/> 1988:  " + d.data.year1988 + d.data.unit
+                  + "<br/> 1989:  " + d.data.year1989 + d.data.unit
+                  + "<br/> 1990:  " + d.data.year1990 + d.data.unit
+                  + "<br/> 1991:  " + d.data.year1991 + d.data.unit
+                  + "<br/> 1992:  " + d.data.year1992 + d.data.unit
+                  + "<br/> 1993:  " + d.data.year1993 + d.data.unit
+                  + "<br/> 1994:  " + d.data.year1994 + d.data.unit
+                  + "<br/> 1995:  " + d.data.year1995 + d.data.unit
+                  + "<br/> 1996:  " + d.data.year1996 + d.data.unit
+                  + "<br/> 1997:  " + d.data.year1997 + d.data.unit
+                  + "<br/> 1998:  " + d.data.year1998 + d.data.unit
+                  + "<br/> 1999:  " + d.data.year1999 + d.data.unit
+                  + "<br/> 2000:  " + d.data.year2014 + d.data.unit
+                  + "<br/> 2001:  " + d.data.year2000 + d.data.unit
+                  + "<br/> 2002:  " + d.data.year2001 + d.data.unit
+                  + "<br/> 2003:  " + d.data.year2002 + d.data.unit
+                  + "<br/> 2004:  " + d.data.year2003 + d.data.unit
+                  + "<br/> 2005:  " + d.data.year2004 + d.data.unit
+                  + "<br/> 2006:  " + d.data.year2005 + d.data.unit
+                  + "<br/> 2007:  " + d.data.year2006 + d.data.unit
+                  + "<br/> 2008:  " + d.data.year2007 + d.data.unit
+                  + "<br/> 2009:  " + d.data.year2008 + d.data.unit
+                  + "<br/> 2010:  " + d.data.year2009 + d.data.unit
+                  + "<br/> 2011:  " + d.data.year2010 + d.data.unit
+                  + "<br/> 2012:  " + d.data.year2011 + d.data.unit
+                  + "<br/> 2013:  " + d.data.year2012 + d.data.unit
+                  + "<br/> 2014:  " + d.data.year2013 + d.data.unit)
                     .style('left', ( 1000) + 'px')
                     .style('top', (140) + 'px')
 
