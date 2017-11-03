@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>583-Assignment1</title>
+  <link rel="stylesheet" href="script/base.css">
+  <link rel="stylesheet" href="script/jquery-ui-1.12.1.custom/jquery-ui-min.css">
+  <link rel="stylesheet" href="script/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css">
+  <script>
+    $( function() {
+    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+    $( "button, input, a" ).click( function( event ) {
+      event.preventDefault();
+    } );
+  } );
+    function buttonPress(value){
+      currentContext = value;
+      draw();
+    };
+  </script>
+</head>
+<body>
+
+
+  
+    <div class="container">
+        <h1>Behavior Appropriateness by Context</h1>
+        
+    </div>
+  
+  <script src="script/d3.min.js"></script>
+  <script src="assignment1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+</body>
+</html>
